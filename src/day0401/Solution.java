@@ -1,7 +1,5 @@
 package day0401;
 
-import javax.swing.tree.TreeNode;
-
 /**
  * @hurusea
  * @create2020-04-01 10:26
@@ -46,9 +44,9 @@ public class Solution {
      * @return
      */
     public boolean isSymmetric(TreeNode root) {
-        return root == null ? true : recur(root.left, root.right);
+        return root == null ? true : search(root.left, root.right);
     }
-    boolean recur(TreeNode L, TreeNode R) {
+    boolean search(TreeNode L, TreeNode R) {
         if(L == null && R == null) return true;
         if(L == null || R == null || L.val != R.val) return false;
         return recur(L.left, R.right) && recur(L.right, R.left);
@@ -75,18 +73,6 @@ public class Solution {
         }
         return res;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 class TreeNode {
