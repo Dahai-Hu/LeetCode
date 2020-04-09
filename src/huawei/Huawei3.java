@@ -23,9 +23,8 @@ public class Huawei3 {
         try (Scanner scanner = new Scanner(System.in)){
             for (int i = 0; i <map.length; i++) {
                 String nextLine = scanner.nextLine();
-//                String[] split = nextLine.split(",");
                 for (int j = 0; j <map.length; j++) {
-                    map[i][j]=nextLine.charAt(j)-'0';
+                    map[i][j]=nextLine.charAt(2*j+1)-'0';
                     if (map[i][j]>0){
                         top++;
                         mark[i][j]=true;
@@ -47,7 +46,7 @@ public class Huawei3 {
         Cell cell = cellList.get(index);
         top++;
         index++;
-        for (int i = 0; i <=9&&!done; i++) {
+        for (int i = 1; i <=9&&!done; i++) {
             if (legal(cell,i)){
                 mark[cell.x][cell.y]=true;
                 map[cell.x][cell.y]=i;
@@ -96,9 +95,11 @@ public class Huawei3 {
 
     public void show() {
         for (int i = 0; i <map.length; i++) {
-            for (int j = 0; j <map[i].length; j++) {
-                System.out.print(map[i][j]);
+            System.out.print("{");
+            for (int j = 0; j <map[i].length-1; j++) {
+                System.out.print(map[i][j]+",");
             }
+            System.out.print(map[i][map.length-1]+"}");
             System.out.println();
         }
     }
