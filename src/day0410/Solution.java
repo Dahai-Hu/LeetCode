@@ -111,4 +111,35 @@ public class Solution {
         int res = missingNumber(nums);
         System.out.println(res);
     }
+
+    /**
+     * 给定一棵二叉搜索树，请找出其中第k大的节点。
+     * @param root
+     * @param k
+     * @return
+     */
+    int res, k;
+    public int kthLargest(TreeNode root, int k) {
+        this.k = k;
+        dfs(root);
+        return res;
+    }
+    void dfs(TreeNode root) {
+        if(root == null) return;
+        dfs(root.right);
+        if(--k == 0) res = root.val;
+        dfs(root.left);
+    }
+
+    /**
+     * 输入一棵二叉树的根节点，求该树的深度。
+     * 从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，
+     * 最长路径的长度为树的深度。
+     * @param root
+     * @return
+     */
+    public int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
 }
