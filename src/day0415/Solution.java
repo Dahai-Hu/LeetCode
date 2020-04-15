@@ -100,19 +100,19 @@ public class Solution {
      * @return
      */
     public int[] constructArr(int[] a) {
-        int[] b = new int[a.length];
-        int front = 1;
-        int back = 1;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < i; j++) {
-                front *= a[j];
-            }
-            for (int j = i + 1; j < a.length; j++) {
-                back *= a[j];
-            }
-            b[i] = front * back;
-            front = 1;
-            back = 1;
+        if (0 == a.length) {
+            return new int[0];
+        }
+        int length = a.length;
+        int[] b = new int[length];
+        b[0] = 1;
+        for (int i = 1; i < length; i++) {
+            b[i] = b[i - 1] * a[i - 1];
+        }
+        int temp = 1;
+        for (int j = length - 2; j >= 0; j--) {
+            temp *= a[j + 1];
+            b[j] *= temp;
         }
         return b;
     }
