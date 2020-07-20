@@ -18,12 +18,14 @@ public class Chicken {
             int k = scaner.nextInt();
             int[] a = new int[n];
             PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
+                @Override
                 public int compare(Integer o1, Integer o2) {
                     return  o2.compareTo(o1);
                 }
             });
-            for(int i = 0;i < n;i++)
+            for(int i = 0;i < n;i++) {
                 queue.add(scaner.nextInt()+m*k); //先全部加上m*k
+            }
             int index = m-1;
             while(m-->0 && !queue.isEmpty()){
                 int x = queue.poll();
